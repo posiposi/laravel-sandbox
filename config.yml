@@ -1,0 +1,49 @@
+includes:
+  - ./app
+  - ./config
+
+excludes:
+  - vendor
+  - tests
+  - bootstrap
+  - storage
+  - database
+  - public
+  - resources
+  - node_modules
+  - .git
+  - cache
+
+extensions:
+  - php
+
+report:
+  html: public/metrics/
+
+composer: true
+
+groups:
+  Controllers:
+    name: "^.*(Controller|Controllers)\\\\.*"
+  Models:
+    name: "^.*(Models)\\\\.*"
+  Services:
+    name: "^.*(Services)\\\\.*"
+  Repositories:
+    name: "^.*(Repositories)\\\\.*"
+  Middleware:
+    name: "^.*(Middleware)\\\\.*"
+  Requests:
+    name: "^.*(Requests)\\\\.*"
+  Providers:
+    name: "^.*(Providers)\\\\.*"
+  Events:
+    name: "^.*(Events)\\\\.*"
+  Listeners:
+    name: "^.*(Listeners)\\\\.*"
+  Jobs:
+    name: "^.*(Jobs)\\\\.*"
+
+plugins:
+  git:
+    enabled: false
