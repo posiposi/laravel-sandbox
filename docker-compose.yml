@@ -29,6 +29,18 @@ services:
     networks:
       - laravel
 
+  metrics:
+    image: nginx:alpine
+    container_name: laravel-metrics
+    restart: unless-stopped
+    ports:
+      - '8081:80'
+    volumes:
+      - ./:/var/www/html
+      - ./docker/nginx/metrics.conf:/etc/nginx/conf.d/default.conf
+    networks:
+      - laravel
+
   mysql:
     image: mysql:8.4
     container_name: laravel-mysql
