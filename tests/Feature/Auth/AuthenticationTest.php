@@ -84,5 +84,5 @@ test('users are rate limited', function () {
 
     $errors = session('errors');
 
-    $this->assertStringContainsString('Too many login attempts', $errors->first('email'));
+    $this->assertStringContainsString('ログインに続けて失敗しています', $errors->first('email'));
 });

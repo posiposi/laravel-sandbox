@@ -1,0 +1,27 @@
+includes:
+  - ./app
+  - ./config
+
+excludes:
+  - vendor
+  - tests
+  - bootstrap
+  - storage
+  - database
+  - public
+  - resources
+  - node_modules
+  - .git
+  - cache
+
+extensions:
+  - php
+
+report:
+  html: public/metrics/
+
+composer: true
+
+plugins:
+  git:
+    enabled: false
