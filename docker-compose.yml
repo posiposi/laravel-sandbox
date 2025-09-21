@@ -13,6 +13,7 @@ services:
       - laravel
     depends_on:
       - mysql
+      - test_db
 
   nginx:
     image: nginx:alpine
@@ -67,10 +68,38 @@ services:
       retries: 3
       timeout: 5s
 
+  test_db:
+    image: mysql:8.4
+    container_name: laravel-test-db
+    restart: unless-stopped
+    ports:
+      - '3307:3306'
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_ROOT_HOST: '%'
+      MYSQL_DATABASE: laravel_test
+      MYSQL_USER: sail
+      MYSQL_PASSWORD: password
+      MYSQL_ALLOW_EMPTY_PASSWORD: 1
+    volumes:
+      - test-mysql-data:/var/lib/mysql
+    networks:
+      - laravel
+    healthcheck:
+      test:
+        - CMD
+        - mysqladmin
+        - ping
+        - '-ppassword'
+      retries: 3
+      timeout: 5s
+
 networks:
   laravel:
     driver: bridge
 
 volumes:
   mysql-data:
+    driver: local
+  test-mysql-data:
     driver: local
