@@ -22,28 +22,6 @@ report:
 
 composer: true
 
-groups:
-  Controllers:
-    name: "^.*(Controller|Controllers)\\\\.*"
-  Models:
-    name: "^.*(Models)\\\\.*"
-  Services:
-    name: "^.*(Services)\\\\.*"
-  Repositories:
-    name: "^.*(Repositories)\\\\.*"
-  Middleware:
-    name: "^.*(Middleware)\\\\.*"
-  Requests:
-    name: "^.*(Requests)\\\\.*"
-  Providers:
-    name: "^.*(Providers)\\\\.*"
-  Events:
-    name: "^.*(Events)\\\\.*"
-  Listeners:
-    name: "^.*(Listeners)\\\\.*"
-  Jobs:
-    name: "^.*(Jobs)\\\\.*"
-
 plugins:
   git:
     enabled: false
