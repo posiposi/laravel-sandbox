@@ -18,10 +18,10 @@ jobs:
       mysql:
         image: mysql:8.4
         env:
-          MYSQL_ROOT_PASSWORD: password
-          MYSQL_DATABASE: laravel_test
-          MYSQL_USER: sail
-          MYSQL_PASSWORD: password
+          MYSQL_ROOT_PASSWORD: ${{ secrets.CI_DB_PASSWORD }}
+          MYSQL_DATABASE: ${{ secrets.CI_DB_DATABASE }}
+          MYSQL_USER: ${{ secrets.CI_DB_USERNAME }}
+          MYSQL_PASSWORD: ${{ secrets.CI_DB_PASSWORD }}
         ports:
           - 3306:3306
 
@@ -55,6 +55,16 @@ jobs:
         run: |
           cp .env.example .env
           cp .env.testing.ci .env.testing
+
+      - name: Set Database Environment Variables
+        run: |
+          # Replace environment variables in .env.testing
+          sed -i "s/\${CI_DB_CONNECTION}/${{ secrets.CI_DB_CONNECTION }}/g" .env.testing
+          sed -i "s/\${CI_DB_HOST}/${{ secrets.CI_DB_HOST }}/g" .env.testing
+          sed -i "s/\${CI_DB_PORT}/${{ secrets.CI_DB_PORT }}/g" .env.testing
+          sed -i "s/\${CI_DB_DATABASE}/${{ secrets.CI_DB_DATABASE }}/g" .env.testing
+          sed -i "s/\${CI_DB_USERNAME}/${{ secrets.CI_DB_USERNAME }}/g" .env.testing
+          sed -i "s/\${CI_DB_PASSWORD}/${{ secrets.CI_DB_PASSWORD }}/g" .env.testing
 
       - name: Generate Application Key
         run: |
