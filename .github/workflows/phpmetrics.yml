@@ -38,8 +38,8 @@ jobs:
 
       - name: Install dependencies
         run: |
-          composer install --prefer-dist --no-progress --no-suggest
-          composer update
+          composer update --prefer-dist --no-progress --no-interaction
+          composer install --prefer-dist --no-progress --no-interaction
 
       - name: Install PHPMetrics
         run: composer require --dev phpmetrics/phpmetrics
