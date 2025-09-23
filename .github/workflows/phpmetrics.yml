@@ -56,6 +56,18 @@ jobs:
       - name: Install PHPMetrics
         run: composer require --dev phpmetrics/phpmetrics
 
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install npm dependencies
+        run: npm ci
+
+      - name: Build frontend assets
+        run: npm run build
+
       - name: Setup Laravel application
         run: |
           cp .env.example .env
