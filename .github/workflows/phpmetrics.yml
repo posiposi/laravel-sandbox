@@ -1,0 +1,73 @@
+name: PHP Metrics Report
+
+on:
+  push:
+    branches: [ main, test-phpmetrics ]  # 検証ブランチを追加
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          extensions: mbstring, xml, ctype, iconv, intl, pdo_sqlite, dom, filter, json, phar, tokenizer
+          coverage: xdebug
+
+      - name: Cache Composer dependencies
+        uses: actions/cache@v4
+        with:
+          path: vendor
+          key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-php-
+
+      - name: Install dependencies
+        run: composer install --prefer-dist --no-progress --no-suggest
+
+      - name: Install PHPMetrics
+        run: composer require --dev phpmetrics/phpmetrics
+
+      - name: Run tests with coverage
+        run: vendor/bin/pest --coverage-clover coverage.xml
+        continue-on-error: true
+
+      - name: Generate PHPMetrics report
+        run: |
+          mkdir -p public/metrics
+          vendor/bin/phpmetrics --report-html=public/metrics \
+            --report-violations=public/metrics/violations.xml \
+            --junit=coverage.xml \
+            --git \
+            --exclude=vendor,node_modules,tests,database,bootstrap,storage,public \
+            app/
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./public/metrics
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: analyze
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
