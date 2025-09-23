@@ -37,10 +37,9 @@ jobs:
             ${{ runner.os }}-php-
 
       - name: Install dependencies
-        run: composer install --prefer-dist --no-progress --no-suggest
-
-      - name: Composer update
-        run: composer update
+        run: |
+          composer install --prefer-dist --no-progress --no-suggest
+          composer update
 
       - name: Install PHPMetrics
         run: composer require --dev phpmetrics/phpmetrics
