@@ -2,7 +2,7 @@ name: PHP Metrics Report
 
 on:
   push:
-    branches: [ main, test-phpmetrics ]  # 検証ブランチを追加
+    branches: [main, test-phpmetrics] # 検証ブランチを追加
   workflow_dispatch:
 
 permissions:
@@ -11,7 +11,7 @@ permissions:
   id-token: write
 
 concurrency:
-  group: "pages"
+  group: 'pages'
   cancel-in-progress: false
 
 jobs:
@@ -38,6 +38,9 @@ jobs:
 
       - name: Install dependencies
         run: composer install --prefer-dist --no-progress --no-suggest
+
+      - name: Composer update
+        run: composer update
 
       - name: Install PHPMetrics
         run: composer require --dev phpmetrics/phpmetrics
