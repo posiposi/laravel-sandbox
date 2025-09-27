@@ -82,7 +82,7 @@ jobs:
           DB_PASSWORD: password
 
       - name: Run tests with coverage
-        run: vendor/bin/pest --coverage-html coverage.html
+        run: vendor/bin/pest --log-junit junit.xml --coverage-clover coverage.xml
         continue-on-error: true
         env:
           DB_CONNECTION: mysql
@@ -97,7 +97,7 @@ jobs:
           mkdir -p public/metrics
           vendor/bin/phpmetrics --report-html=public/metrics \
             --report-violations=public/metrics/violations.xml \
-            --junit=coverage.html \
+            --junit=junit.xml \
             --git \
             --exclude=vendor,node_modules,tests,database,bootstrap,storage,public \
             app/
