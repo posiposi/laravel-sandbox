@@ -2,7 +2,7 @@ name: PHP Metrics Report
 
 on:
   push:
-    branches: [main, test-phpmetrics] # 検証ブランチを追加
+    branches: ['main']
   workflow_dispatch:
 
 permissions:
