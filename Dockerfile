@@ -15,6 +15,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd \
     && pecl install yaml \
     && docker-php-ext-enable yaml \
+    && pecl install pcov \
+    && docker-php-ext-enable pcov \
     && pecl clear-cache
 
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
