@@ -95,8 +95,6 @@ jobs:
       - name: Generate PHPMetrics report
         run: |
           mkdir -p public/metrics
-          # Debug: Check if JUnit and coverage files exist
-          ls -la junit.xml coverage.xml || true
           vendor/bin/phpmetrics --report-html=public/metrics \
             --report-violations=public/metrics/violations.xml \
             --junit=junit.xml \
