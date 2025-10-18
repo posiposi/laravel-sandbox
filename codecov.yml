@@ -7,7 +7,6 @@ coverage:
     project:
       default:
         target: 100% # Auto-adjust target based on previous coverage
-        base: auto # Use auto-calculated base
     patch:
       default:
         target: 100%
