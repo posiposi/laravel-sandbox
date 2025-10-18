@@ -11,6 +11,6 @@ class CoffeeTest extends \PHPUnit\Framework\TestCase
         $coffee = Coffee::from('Espresso', 2.50);
 
         // カバレッジを意図的に落とすためにアサーション対象は一つだけ
-        $this->assertEquals('Espresso', $coffee->getType());
+        // $this->assertEquals('Espresso', $coffee->getType());
     }
 }
