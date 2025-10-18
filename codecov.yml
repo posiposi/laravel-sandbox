@@ -6,33 +6,31 @@ coverage:
   status:
     project:
       default:
-        target: auto        # Auto-adjust target based on previous coverage
-        threshold: 0%       # Allow any coverage change
-        base: auto          # Use auto-calculated base
+        target: 100% # Auto-adjust target based on previous coverage
+        base: auto # Use auto-calculated base
     patch:
       default:
-        target: auto
-        threshold: 0%
+        target: 100%
 
 # Pull Request comment configuration
 comment:
-  layout: "diff, flags, files"  # Show diff, flags, and file changes
-  behavior: default              # Default comment behavior
-  require_changes: false         # Post comment even without changes
-  require_base: false            # Don't require base commit
-  require_head: true             # Require head commit
-  hide_project_coverage: false   # Show project coverage
+  layout: 'diff, flags, files' # Show diff, flags, and file changes
+  behavior: default # Default comment behavior
+  require_changes: false # Post comment even without changes
+  require_base: false # Don't require base commit
+  require_head: true # Require head commit
+  hide_project_coverage: false # Show project coverage
 
 # Ignore paths (Laravel specific)
 ignore:
-  - "bootstrap/**/*"
-  - "config/**/*"
-  - "public/**/*"
-  - "storage/**/*"
-  - "resources/views/**/*"
-  - "database/migrations/**/*"
-  - "database/factories/**/*"
-  - "database/seeders/**/*"
-  - "tests/**/*"
-  - "node_modules/**/*"
-  - "vendor/**/*"
+  - 'bootstrap/**/*'
+  - 'config/**/*'
+  - 'public/**/*'
+  - 'storage/**/*'
+  - 'resources/views/**/*'
+  - 'database/migrations/**/*'
+  - 'database/factories/**/*'
+  - 'database/seeders/**/*'
+  - 'tests/**/*'
+  - 'node_modules/**/*'
+  - 'vendor/**/*'
