@@ -27,4 +27,9 @@ class Coffee
     {
         return $this->price;
     }
+
+    public function getDescription(): string
+    {
+        return "{$this->type} - \${$this->price}";
+    }
 }
