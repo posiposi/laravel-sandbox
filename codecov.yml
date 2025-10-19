@@ -11,7 +11,7 @@ coverage:
 
 comment:
   layout: 'condensed_header, condensed_files, condensed_footer'
-  hide_project_coverage: TRUE
+  hide_project_coverage: true
   behavior: default
   require_changes: false
   require_base: false
