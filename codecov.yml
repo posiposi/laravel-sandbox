@@ -10,7 +10,8 @@ coverage:
         threshold: 0%
 
 comment:
-  layout: "header, diff, changes, files"
+  layout: 'condensed_header, condensed_files, condensed_footer'
+  hide_project_coverage: TRUE
   behavior: default
   require_changes: false
   require_base: false
