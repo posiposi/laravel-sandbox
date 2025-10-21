@@ -79,3 +79,27 @@ jobs:
 
       - name: Tests
         run: ./vendor/bin/pest --coverage-xml coverage.xml
+
+      - name: Convert XML to Markdown
+        uses: docker://pandoc/core:3.5
+        with:
+          args: >-
+            --standalone
+            --from=xml
+            --to=markdown
+            --output=coverage.md
+            coverage.xml
+
+      # - name: Upload Coverage Markdown Artifact
+      #   uses: actions/upload-artifact@v4
+      #   with:
+      #     name: coverage-markdown
+      #     path: coverage.md
+      #     # 検証のため最短期間で設定
+      #     retention-days: 1
+
+      # - name: Add Coverage to Job Summary
+      #   run: |
+      #     echo "# Test Coverage Report" >> $GITHUB_STEP_SUMMARY
+      #     echo "" >> $GITHUB_STEP_SUMMARY
+      #     cat coverage.md >> $GITHUB_STEP_SUMMARY
