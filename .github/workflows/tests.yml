@@ -79,13 +79,3 @@ jobs:
 
       - name: Tests
         run: ./vendor/bin/pest --coverage-xml coverage.xml
-
-      - name: Upload coverage reports to Codecov
-        uses: codecov/codecov-action@v5
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
-          files: ./coverage.xml
-          flags: unittests
-          name: codecov-laravel
-          fail_ci_if_error: false
-          verbose: true
