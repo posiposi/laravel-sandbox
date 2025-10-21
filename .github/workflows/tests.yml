@@ -78,15 +78,15 @@ jobs:
         run: php artisan migrate --env=testing
 
       - name: Tests
-        run: ./vendor/bin/pest --coverage-xml coverage
+        run: ./vendor/bin/pest --coverage-html coverage
 
-      - name: Convert XML to Markdown
+      - name: Convert HTML to Markdown
         uses: docker://pandoc/core:3.5
         with:
           args: >-
             --standalone
             --output=coverage.md
-            coverage/index.xml
+            coverage/index.html
 
       - name: Upload Coverage Markdown Artifact
         uses: actions/upload-artifact@v4
