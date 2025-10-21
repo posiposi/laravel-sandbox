@@ -85,7 +85,6 @@ jobs:
         with:
           args: >-
             --standalone
-            --to=markdown
             --output=coverage.md
             coverage/index.xml
 
