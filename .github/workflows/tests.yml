@@ -88,13 +88,13 @@ jobs:
             --output=coverage.md
             coverage/index.xml
 
-      # - name: Upload Coverage Markdown Artifact
-      #   uses: actions/upload-artifact@v4
-      #   with:
-      #     name: coverage-markdown
-      #     path: coverage.md
-      #     # 検証のため最短期間で設定
-      #     retention-days: 1
+      - name: Upload Coverage Markdown Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-markdown
+          path: coverage.md
+          # 検証のため最短期間で設定
+          retention-days: 1
 
       # - name: Add Coverage to Job Summary
       #   run: |
