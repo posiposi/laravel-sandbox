@@ -84,7 +84,6 @@ jobs:
         uses: docker://pandoc/core:3.5
         with:
           args: >-
-            --standalone
             --output=coverage.md
             coverage/index.html
 
