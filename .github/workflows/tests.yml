@@ -79,13 +79,13 @@ jobs:
 
       - name: Tests
         run: |
-          ./vendor/bin/pest --coverage-text coverage | tee test_output.txt
+          ./vendor/bin/pest --coverage | tee coverage.txt
 
       - name: Upload Coverage Artifact
         uses: actions/upload-artifact@v4
         with:
           name: coverage-report
-          path: coverage/
+          path: coverage.txt
           # 検証のため最短期間で設定
           retention-days: 1
 
@@ -94,5 +94,5 @@ jobs:
           echo "# Test Coverage Report" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo '```' >> $GITHUB_STEP_SUMMARY
-          cat test_output.txt >> $GITHUB_STEP_SUMMARY
+          cat coverage.txt >> $GITHUB_STEP_SUMMARY
           echo '```' >> $GITHUB_STEP_SUMMARY
