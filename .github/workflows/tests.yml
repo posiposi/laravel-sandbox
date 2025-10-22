@@ -78,20 +78,14 @@ jobs:
         run: php artisan migrate --env=testing
 
       - name: Tests
-        run: ./vendor/bin/pest --coverage-html coverage
-
-      # - name: Convert HTML to Markdown
-      #   uses: docker://pandoc/core:3.5
-      #   with:
-      #     args: >-
-      #       --output=coverage.md
-      #       coverage/index.html
+        run: |
+          ./vendor/bin/pest --coverage-html coverage --coverage --coverage-min=0 | tee test_output.txt
 
       - name: Upload Coverage Artifact
         uses: actions/upload-artifact@v4
         with:
           name: coverage-report
-          path: coverage/index.html
+          path: coverage/
           # 検証のため最短期間で設定
           retention-days: 1
 
@@ -99,4 +93,6 @@ jobs:
         run: |
           echo "# Test Coverage Report" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          cat coverage/index.html >> $GITHUB_STEP_SUMMARY
+          echo '```' >> $GITHUB_STEP_SUMMARY
+          cat test_output.txt >> $GITHUB_STEP_SUMMARY
+          echo '```' >> $GITHUB_STEP_SUMMARY
