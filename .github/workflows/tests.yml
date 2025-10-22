@@ -80,18 +80,18 @@ jobs:
       - name: Tests
         run: ./vendor/bin/pest --coverage-html coverage
 
-      - name: Convert HTML to Markdown
-        uses: docker://pandoc/core:3.5
-        with:
-          args: >-
-            --output=coverage.md
-            coverage/index.html
+      # - name: Convert HTML to Markdown
+      #   uses: docker://pandoc/core:3.5
+      #   with:
+      #     args: >-
+      #       --output=coverage.md
+      #       coverage/index.html
 
-      - name: Upload Coverage Markdown Artifact
+      - name: Upload Coverage Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: coverage-markdown
-          path: coverage.md
+          name: coverage-report
+          path: coverage/coverage.html
           # 検証のため最短期間で設定
           retention-days: 1
 
@@ -99,4 +99,4 @@ jobs:
         run: |
           echo "# Test Coverage Report" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          cat coverage.md >> $GITHUB_STEP_SUMMARY
+          cat coverage/coverage.html >> $GITHUB_STEP_SUMMARY
