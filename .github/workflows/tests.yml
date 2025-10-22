@@ -79,7 +79,7 @@ jobs:
 
       - name: Tests
         run: |
-          ./vendor/bin/pest --coverage-html coverage --coverage --coverage-min=0 | tee test_output.txt
+          ./vendor/bin/pest --coverage-text coverage | tee test_output.txt
 
       - name: Upload Coverage Artifact
         uses: actions/upload-artifact@v4
