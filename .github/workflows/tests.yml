@@ -91,7 +91,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: coverage-report
-          path: coverage/coverage.html
+          path: coverage/index.html
           # 検証のため最短期間で設定
           retention-days: 1
 
@@ -99,4 +99,4 @@ jobs:
         run: |
           echo "# Test Coverage Report" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          cat coverage/coverage.html >> $GITHUB_STEP_SUMMARY
+          cat coverage/index.html >> $GITHUB_STEP_SUMMARY
