@@ -31,3 +31,4 @@ yarn-error.log
 /CLAUDE.md
 coverage.xml
 /.claude
+/coverage
