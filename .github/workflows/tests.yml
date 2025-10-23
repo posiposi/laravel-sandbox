@@ -81,6 +81,15 @@ jobs:
         run: |
           ./vendor/bin/pest --coverage-html coverage
 
+      - name: Remove breadcrumb and links from HTML
+        run: |
+          # Remove breadcrumb navigation
+          sed -i '/<nav aria-label="breadcrumb">/,/<\/nav>/d' coverage/index.html
+          # Remove directory icons
+          sed -i 's|<img src="_icons/[^"]*" class="octicon" />||g' coverage/index.html
+          # Remove links but keep text
+          sed -i 's|<a href="[^"]*">\([^<]*\)</a>|\1|g' coverage/index.html
+
       - name: Convert HTML to Markdown
         uses: docker://pandoc/core:3.5
         with:
