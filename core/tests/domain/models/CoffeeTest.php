@@ -21,4 +21,11 @@ class CoffeeTest extends \PHPUnit\Framework\TestCase
         $this->expectException(Exception::class);
         Coffee::from('green_tea', 1.75);
     }
+
+    public function testCoffeeWithCaffeinePercentage()
+    {
+        $coffee = Coffee::from('Espresso', 2.50, 2.5);
+
+        $this->assertEquals(2.5, $coffee->getCaffeinePercentage());
+    }
 }

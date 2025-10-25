@@ -8,19 +8,21 @@ class Coffee
 {
     private string $type;
     private float $price;
+    private float $caffeinePercentage;
 
-    private function __construct(string $type, float $price)
+    private function __construct(string $type, float $price, float $caffeinePercentage)
     {
         if ($type !== 'Espresso') {
             throw new \Exception("Invalid coffee type: $type");
         }
         $this->type = $type;
         $this->price = $price;
+        $this->caffeinePercentage = $caffeinePercentage;
     }
 
-    public static function from(string $type, float $price): self
+    public static function from(string $type, float $price, float $caffeinePercentage = 0.0): self
     {
-        return new self($type, $price);
+        return new self($type, $price, $caffeinePercentage);
     }
 
     public function getType(): string
@@ -31,5 +33,10 @@ class Coffee
     public function getPrice(): float
     {
         return $this->price;
+    }
+
+    public function getCaffeinePercentage(): float
+    {
+        return $this->caffeinePercentage;
     }
 }
