@@ -2,6 +2,8 @@
 
 namespace core\domain\models;
 
+use Exception;
+
 class Coffee
 {
     private string $type;
@@ -9,6 +11,9 @@ class Coffee
 
     private function __construct(string $type, float $price)
     {
+        if ($type !== 'Espresso') {
+            throw new \Exception("Invalid coffee type: $type");
+        }
         $this->type = $type;
         $this->price = $price;
     }
