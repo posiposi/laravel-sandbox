@@ -78,14 +78,36 @@ jobs:
         run: php artisan migrate --env=testing
 
       - name: Tests
-        run: ./vendor/bin/pest --coverage-clover coverage.xml
+        run: |
+          ./vendor/bin/pest --coverage-html coverage
 
-      - name: Upload coverage reports to Codecov
-        uses: codecov/codecov-action@v5
+      - name: Remove breadcrumb and links from HTML
+        run: |
+          # Remove breadcrumb navigation
+          sed -i '/<nav aria-label="breadcrumb">/,/<\/nav>/d' coverage/index.html
+          # Remove directory icons
+          sed -i 's|<img src="_icons/[^"]*" class="octicon" />||g' coverage/index.html
+          # Remove links but keep text
+          sed -i 's|<a href="[^"]*">\([^<]*\)</a>|\1|g' coverage/index.html
+
+      - name: Convert HTML to Markdown
+        uses: docker://pandoc/core:3.5
         with:
-          token: ${{ secrets.CODECOV_TOKEN }}
-          files: ./coverage.xml
-          flags: unittests
-          name: codecov-laravel
-          fail_ci_if_error: false
-          verbose: true
+          args: >-
+            --to=gfm
+            --output=coverage.md
+            coverage/index.html
+
+      - name: Upload Coverage Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-report
+          path: coverage.md
+          # 検証のため最短期間で設定
+          retention-days: 1
+
+      - name: Add Coverage to Job Summary
+        run: |
+          echo "# Test Coverage Report" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          cat coverage.md >> $GITHUB_STEP_SUMMARY
