@@ -269,13 +269,6 @@ reviews:
             # Default: true
             enabled: true
 
-        # Ruff is a Python linter and code formatter.
-        # Default: {}
-        ruff:
-            # Enable Ruff - Ruff is a Python linter and code formatter. - Enable Ruff integration. - v0.14.1
-            # Default: true
-            enabled: true
-
         # markdownlint-cli2 is a static analysis tool to enforce standards and consistency for Markdown files.
         # Default: {}
         markdownlint:
@@ -326,29 +319,12 @@ reviews:
             # Default: "default"
             level: 'default'
 
-        # Biome is a fast formatter, linter, and analyzer for web projects.
-        # Default: {}
-        biome:
-            # Enable Biome - Biome is a fast formatter, linter, and analyzer for web projects. - Enable Biome integration. - v2.1.2
-            # Default: true
-            enabled: true
-
         # Hadolint is a Dockerfile linter.
         # Default: {}
         hadolint:
             # Enable Hadolint - Hadolint is a Dockerfile linter. - Enable Hadolint integration. - v2.14.0
             # Default: true
             enabled: true
-
-        # SwiftLint integration configuration object.
-        # Default: {}
-        swiftlint:
-            # Enable SwiftLint - SwiftLint is a Swift linter. - Enable SwiftLint integration. - v0.57.0
-            # Default: true
-            enabled: true
-
-            # Optional path to the SwiftLint configuration file relative to the repository. This is useful when the configuration file is named differently than the default '.swiftlint.yml' or '.swiftlint.yaml'.
-            # config_file: "example-value"
 
         # PHPStan is a tool to analyze PHP code.
         # Default: {}
@@ -376,16 +352,6 @@ reviews:
             # Default: true
             enabled: true
 
-        # golangci-lint is a fast linters runner for Go.
-        # Default: {}
-        golangci-lint:
-            # Enable golangci-lint - golangci-lint is a fast linters runner for Go. - Enable golangci-lint integration. - v2.5.0
-            # Default: true
-            enabled: true
-
-            # Optional path to the golangci-lint configuration file relative to the repository. Useful when the configuration file is named differently than the default '.golangci.yml', '.golangci.yaml', '.golangci.toml', '.golangci.json'.
-            # config_file: "example-value"
-
         # YAMLlint is a linter for YAML files.
         # Default: {}
         yamllint:
@@ -400,23 +366,6 @@ reviews:
             # Default: true
             enabled: true
 
-        # Checkov is a static code analysis tool for infrastructure-as-code files.
-        # Default: {}
-        checkov:
-            # Enable Checkov - Checkov is a static code analysis tool for infrastructure-as-code files. - v3.2.334
-            # Default: true
-            enabled: true
-
-        # Detekt is a static code analysis tool for Kotlin files.
-        # Default: {}
-        detekt:
-            # Enable detekt - detekt is a static code analysis tool for Kotlin files. - v1.23.8
-            # Default: true
-            enabled: true
-
-            # Optional path to the detekt configuration file relative to the repository.
-            # config_file: "example-value"
-
         # ESLint is a static code analysis tool for JavaScript files.
         # Default: {}
         eslint:
@@ -424,135 +373,10 @@ reviews:
             # Default: true
             enabled: true
 
-        # Flake8 is a Python linter that wraps PyFlakes, pycodestyle and Ned Batchelder's McCabe script.
-        # Default: {}
-        flake8:
-            # Enable Flake8 - Flake8 is a Python linter that wraps PyFlakes, pycodestyle and Ned Batchelder's McCabe script. - v7.3.0
-            # Default: true
-            enabled: true
-
-        # RuboCop is a Ruby static code analyzer (a.k.a. linter ) and code formatter.
-        # Default: {}
-        rubocop:
-            # Enable RuboCop - RuboCop is a Ruby static code analyzer (a.k.a. linter ) and code formatter. - v1.81.1
-            # Default: true
-            enabled: true
-
-        # Buf offers linting for Protobuf files.
-        # Default: {}
-        buf:
-            # Enable Buf - Buf offers linting for Protobuf files. - v1.58.0
-            # Default: true
-            enabled: true
-
-        # Regal is a linter and language server for Rego.
-        # Default: {}
-        regal:
-            # Enable Regal - Regal is a linter and language server for Rego. - v0.36.1
-            # Default: true
-            enabled: true
-
         # actionlint is a static checker for GitHub Actions workflow files.
         # Default: {}
         actionlint:
             # Enable actionlint - is a static checker for GitHub Actions workflow files. - v1.7.8
-            # Default: true
-            enabled: true
-
-        # PMD is an extensible multilanguage static code analyzer. It’s mainly concerned with Java.
-        # Default: {}
-        pmd:
-            # Enable PMD - PMD is an extensible multilanguage static code analyzer. It’s mainly concerned with Java. - v7.17.0
-            # Default: true
-            enabled: true
-
-            # Optional path to the PMD configuration file relative to the repository.
-            # config_file: "example-value"
-
-        # Configuration for Clang to perform static analysis on C and C++ code
-        # Default: {}
-        clang:
-            # Enable Clang for C/C++ static analysis and code quality checks - v14.0.6
-            # Default: true
-            enabled: true
-
-        # Cppcheck is a static code analysis tool for the C and C++ programming languages.
-        # Default: {}
-        cppcheck:
-            # Enable Cppcheck - Cppcheck is a static code analysis tool for the C and C++ programming languages. - v2.18.0
-            # Default: true
-            enabled: true
-
-        # Semgrep is a static analysis tool designed to scan code for security vulnerabilities and code quality issues.
-        # Default: {}
-        semgrep:
-            # Enable Semgrep - Semgrep is a static analysis tool designed to scan code for security vulnerabilities and code quality issues. - Enable Semgrep integration. - v1.140.0
-            # Default: true
-            enabled: true
-
-            # Optional path to the Semgrep configuration file relative to the repository.
-            # config_file: "example-value"
-
-        # CircleCI tool is a static checker for CircleCI config files.
-        # Default: {}
-        circleci:
-            # Enable CircleCI - CircleCI tool is a static checker for CircleCI config files. - v0.1.33494
-            # Default: true
-            enabled: true
-
-        # Clippy is a collection of lints to catch common mistakes and improve your Rust code.
-        # Default: {}
-        clippy:
-            # Enable Clippy - Clippy is a collection of lints to catch common mistakes and improve your Rust code. - Enable Clippy integration.
-            # Default: true
-            enabled: true
-
-        # SQLFluff is an open source, dialect-flexible and configurable SQL linter.
-        # Default: {}
-        sqlfluff:
-            # Enable SQLFluff - SQLFluff is an open source, dialect-flexible and configurable SQL linter. - v3.5.0
-            # Default: true
-            enabled: true
-
-        # Configuration for Prisma Schema linting to ensure schema file quality
-        # Default: {}
-        prismaLint:
-            # Enable Prisma Schema linting - Prisma Schema linting helps maintain consistent and error-free schema files - v0.10.3
-            # Default: true
-            enabled: true
-
-        # Pylint is a Python static code analysis tool.
-        # Default: {}
-        pylint:
-            # Enable Pylint - Pylint is a Python static code analysis tool. - v4.0.1
-            # Default: true
-            enabled: true
-
-        # Oxlint is a JavaScript/TypeScript linter for OXC written in Rust.
-        # Default: {}
-        oxc:
-            # Enable Oxlint - Oxlint is a JavaScript/TypeScript linter for OXC written in Rust. - v1.23.0
-            # Default: true
-            enabled: true
-
-        # Configuration for Shopify Theme Check to ensure theme quality and best practices
-        # Default: {}
-        shopifyThemeCheck:
-            # Enable Shopify Theme Check - A linter for Shopify themes that helps you follow Shopify theme & Liquid best practices - cli 3.84.2 - theme 3.58.2
-            # Default: true
-            enabled: true
-
-        # Configuration for Lua code linting to ensure code quality
-        # Default: {}
-        luacheck:
-            # Enable Lua code linting - Luacheck helps maintain consistent and error-free Lua code - v1.2.0
-            # Default: true
-            enabled: true
-
-        # Brakeman is a static analysis security vulnerability scanner for Ruby on Rails applications. - v7.1.0
-        # Default: {}
-        brakeman:
-            # Enable Brakeman - Brakeman is a static analysis security vulnerability scanner for Ruby on Rails applications. - v7.1.0
             # Default: true
             enabled: true
 
