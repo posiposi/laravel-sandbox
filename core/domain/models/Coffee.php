@@ -13,7 +13,7 @@ class Coffee
     private function __construct(string $type, float $price, float $caffeinePercentage)
     {
         if ($type !== 'Espresso') {
-            throw new \Exception("Invalid coffee type: $type");
+            throw new Exception("Invalid coffee type: $type");
         }
         $this->type = $type;
         $this->price = $price;
