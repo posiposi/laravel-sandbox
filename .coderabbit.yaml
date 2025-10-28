@@ -83,7 +83,7 @@ reviews:
 
     # Generate sequence diagrams in the walkthrough.
     # Default: true
-    sequence_diagrams: true
+    sequence_diagrams: false
 
     # Estimate the code review effort in the walkthrough.
     # Default: true
